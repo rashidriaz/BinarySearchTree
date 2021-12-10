@@ -168,5 +168,27 @@ public class BinaryTree {
     }
 
 
+    public boolean isBalanced(){
+        return isBalanced(this.root);
+    }
+
+    private boolean isBalanced(Node node){
+
+        if (hasNoChild(node)){
+            return true;
+        }
+        if (hasOnlyOneChild(node)){
+            return false;
+        }
+        return isBalanced(node.getLeft()) && isBalanced(node.getRight());
+    }
+
+    private boolean hasOnlyOneChild(Node node){
+        return (node.hasLeft() && !node.hasRight()) || (!node.hasLeft() && node.hasRight());
+    }
+
+    private boolean hasNoChild(Node node){
+        return !node.hasRight() && !node.hasLeft();
+    }
 
 }

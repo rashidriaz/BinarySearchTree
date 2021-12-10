@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
             BinaryTree tree = new BinaryTree();
         for (int i = 0; i < 5; i++){
             System.out.print("\nEnter data:\t");
@@ -44,5 +44,44 @@ public class Main {
         }
         tree.printInOrder();
 
+    }
+    */
+
+    public static void main(String[] args) {
+        int[] array = {2,1,5,90,18,30,100};
+        BinaryTree tree = toBST(array);
+        printArray(array);
+        tree.printInOrder();
+        if (tree.isBalanced()){
+            System.out.println("\nTree is balanced");
+        }else {
+            System.out.println("\nTree is not balanced");
+        }
+        System.out.println("----------------------------------------");
+        int[] array2 = {2,1,5,4,7};
+        BinaryTree tree2 = toBST(array2);
+        printArray(array2);
+        tree2.printInOrder();
+        if (tree2.isBalanced()){
+            System.out.println("\nTree is balanced");
+        }else {
+            System.out.println("\nTree is not balanced");
+        }
+    }
+
+
+    public static void printArray(int[] array){
+        System.out.println("\narray is: \n");
+        for (int number: array) {
+            System.out.print(number + ",\t");
+        }
+    }
+
+    public static BinaryTree toBST(int[] array){
+       BinaryTree tree = new BinaryTree();
+        for (int number : array) {
+            tree.insert(number);
+        }
+        return tree;
     }
 }
