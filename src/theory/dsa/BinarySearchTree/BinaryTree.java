@@ -154,13 +154,13 @@ public class BinaryTree {
             node.setRight(deleteData(node.getRight(), number));
             return node;
         }
-        if (node.hasLeft() && node.hasRight()){
+        if (hasBothChild(node)){
             int minimumValueFromRightSubTree = getMinimumNode(node.getRight()).getData();
             node.setData(minimumValueFromRightSubTree);
             node.setRight(deleteData(node.getRight(), minimumValueFromRightSubTree));
             return node;
         }else
-        if (!node.hasLeft() && !node.hasRight()){
+        if (hasNoChild(node)){
                 return null;
         }
         return node.hasRight()? node.getRight() : node.getLeft();
@@ -189,6 +189,10 @@ public class BinaryTree {
 
     private boolean hasNoChild(Node node){
         return !node.hasRight() && !node.hasLeft();
+    }
+
+    private boolean hasBothChild(Node node){
+        return node.hasRight() && node.hasLeft();
     }
 
 }
